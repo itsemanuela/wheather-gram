@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import DettaglioCity from "./Components/DettaglioCity";
 import ShareMood from "./Components/Share";
 import Footer from "./Components/MyFooter";
+import TopDestinations from "./Components/Holiday";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/RicercaMeteo" element={<RicercaMeteo />} />
         <Route path="/details/:cityName" element={<DettaglioCity />} />
         <Route path="/mood" element={<ShareMood />} />
+        <Route path="/Esplora" element={<TopDestinations />} />
       </Routes>
       <Footer />
     </BrowserRouter>
