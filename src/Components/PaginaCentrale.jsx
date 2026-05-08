@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const PaginaCentrale = () => {
   return (
     <div
@@ -21,7 +23,9 @@ const PaginaCentrale = () => {
           con i tuoi amici.
         </p>
 
-        <button className="btn-insta">Inizia a esplorare</button>
+        <Link to="/RicercaMeteo" style={{ textDecoration: "none" }}>
+          <button className="btn-insta">Inizia a esplorare</button>
+        </Link>
       </div>
     </div>
   );
