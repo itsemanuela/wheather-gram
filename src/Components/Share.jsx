@@ -10,7 +10,7 @@ const ShareMood = () => {
   return (
     <div className="container-fluid py-5 animate__animated animate__fadeIn">
       <div className="row g-4 justify-content-center">
-        <div className="col-lg-3 d-none d-lg-block">
+        <div className="col-lg-3 col-12">
           <div className="glass-card p-4 text-center shadow">
             <div className="avatar-main mx-auto mb-3"></div>
             <h5 className="insta-font text-white">Il Tuo Profilo</h5>
@@ -92,7 +92,7 @@ const ShareMood = () => {
           </div>
         </div>
 
-        <div className="col-lg-3 d-none d-lg-block">
+        <div className="col-lg-3 col-12">
           <div className="glass-card p-4">
             <h6 className="text-white mb-4 fw-bold text-start">
               <i className="bi bi-lightning-fill text-warning me-2"></i>Tendenze

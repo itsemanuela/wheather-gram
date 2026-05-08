@@ -5,6 +5,32 @@ const RicercaMeteo = () => {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  //  Lista suggerimenti e stato visibilità
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const cityList = [
+    "Roma",
+    "Milano",
+    "Napoli",
+    "Torino",
+    "Palermo",
+    "Genova",
+    "Firenze",
+    "Bari",
+    "Catania",
+    "Venezia",
+    "Verona",
+    "Londra",
+    "Parigi",
+    "Barcellona",
+    "New York",
+    "Tokyo",
+  ];
+
+  const filteredCities = cityList.filter(
+    (c) => c.toLowerCase().startsWith(city.toLowerCase()) && city.length > 0,
+  );
+
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("weatherFavs");
     return saved ? JSON.parse(saved) : [];
@@ -16,15 +42,16 @@ const RicercaMeteo = () => {
     localStorage.setItem("weatherFavs", JSON.stringify(favorites));
   }, [favorites]);
 
-  const getMeteo = (e) => {
-    e.preventDefault();
-    if (!city) return;
+  const getMeteo = (cityName) => {
+    const targetCity = typeof cityName === "string" ? cityName : city;
+    if (!targetCity) return;
 
     setLoading(true);
     setWeather(null);
+    setShowSuggestions(false);
 
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=it`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${targetCity}&appid=${API_KEY}&units=metric&lang=it`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -62,26 +89,57 @@ const RicercaMeteo = () => {
               Where are you today?
             </h1>
 
-            <form onSubmit={getMeteo} className="d-flex gap-2 mb-3">
-              <input
-                type="text"
-                className="form-control search-input"
-                placeholder="Cerca città..."
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={loading}
+            <div className="position-relative">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  getMeteo();
+                }}
+                className="d-flex gap-2 mb-3"
               >
-                {loading ? (
-                  <span className="spinner-border spinner-border-sm"></span>
-                ) : (
-                  <i className="bi bi-search"></i>
-                )}
-              </button>
-            </form>
+                <input
+                  type="text"
+                  className="form-control search-input"
+                  placeholder="Cerca città..."
+                  value={city}
+                  onChange={(e) => {
+                    setCity(e.target.value);
+                    setShowSuggestions(true);
+                  }}
+                  onFocus={() => setShowSuggestions(true)}
+                />
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  ) : (
+                    <i className="bi bi-search"></i>
+                  )}
+                </button>
+              </form>
+
+              {showSuggestions && filteredCities.length > 0 && (
+                <div className="suggestions-dropdown shadow-lg">
+                  {filteredCities.map((suggestion, index) => (
+                    <div
+                      key={index}
+                      className="suggestion-item"
+                      onClick={() => {
+                        setCity(suggestion);
+                        getMeteo(suggestion);
+                      }}
+                    >
+                      <i className="bi bi-geo-alt me-2 text-white-50"></i>
+                      {suggestion}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {/* ------------------------------------------ */}
 
             {loading && (
               <div className="text-center my-4">
@@ -96,8 +154,8 @@ const RicercaMeteo = () => {
               <div className="mt-4 p-3 border-top border-light animate__animated animate__fadeIn">
                 <div className="d-flex justify-content-between align-items-center">
                   <div>
-                    <h5 className="mb-0 fw-bold">{weather.name}</h5>
-                    <p className="mb-0 text-muted">
+                    <h5 className="mb-0 fw-bold text-white">{weather.name}</h5>
+                    <p className="mb-0 text-white-50">
                       {Math.round(weather.main.temp)}°C -{" "}
                       {weather.weather[0].description}
                     </p>
@@ -124,7 +182,7 @@ const RicercaMeteo = () => {
                   to={`/details/${fav.name}`}
                   className="d-flex align-items-center flex-grow-1 text-decoration-none text-dark"
                 >
-                  <i className="bi bi-geo-alt-fill text-primary me-2 fs-5"></i>
+                  <i className="bi bi-geo-alt-fill text-danger me-2 fs-5"></i>
                   <div className="user-info">
                     <span className="city-name d-block">{fav.name}</span>
                     <span className="post-location small text-muted">
