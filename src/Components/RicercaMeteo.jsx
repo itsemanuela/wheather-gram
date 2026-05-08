@@ -58,8 +58,8 @@ const RicercaMeteo = () => {
       <div className="row justify-content-center mb-5">
         <div className="col-md-6">
           <div className="glass-card p-4 shadow-sm">
-            <h1 className="insta-font text-center mb-4 text-dark">
-              WeatherGram
+            <h1 className="insta-font text-center mb-4 text-light">
+              Where are you today?
             </h1>
 
             <form onSubmit={getMeteo} className="d-flex gap-2 mb-3">
