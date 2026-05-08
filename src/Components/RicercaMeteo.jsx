@@ -139,7 +139,6 @@ const RicercaMeteo = () => {
                 </div>
               )}
             </div>
-            {/* ------------------------------------------ */}
 
             {loading && (
               <div className="text-center my-4">

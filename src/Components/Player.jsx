@@ -2,34 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Player = () => {
-  const moods = [
-    {
-      id: "sunset",
-      label: "Sunset Chill",
-      icon: "bi-brightness-alt-high",
-      playlist: "37i9dQZF1DX3u9TSHqVi3u",
-    },
-    {
-      id: "energy",
-      label: "Pure Energy",
-      icon: "bi-lightning-charge-fill",
-      playlist: "37i9dQZF1DXDX06v9vC0oJ",
-    },
-    {
-      id: "road",
-      label: "Road Trip",
-      icon: "bi-ev-front-fill",
-      playlist: "37i9dQZF1DX9wC98u7S79h",
-    },
-    {
-      id: "relax",
-      label: "Deep Relax",
-      icon: "bi-water",
-      playlist: "37i9dQZF1DX4WYpdgoIcnC",
-    },
-  ];
-
-  const [activePlaylist, setActivePlaylist] = useState(moods[0].playlist);
+  const [activeMood, setActiveMood] = useState("sunset");
 
   return (
     <section className="dest-wrapper min-vh-100">
@@ -42,17 +15,45 @@ const Player = () => {
         </div>
 
         <div className="row g-3 justify-content-center mb-5">
-          {moods.map((mood) => (
-            <div key={mood.id} className="col-6 col-md-3">
-              <button
-                onClick={() => setActivePlaylist(mood.playlist)}
-                className={`dest-mood-card ${activePlaylist === mood.playlist ? "active" : ""}`}
-              >
-                <i className={`bi ${mood.icon} dest-icon-box mb-2`}></i>
-                <span className="dest-mood-label">{mood.label}</span>
-              </button>
-            </div>
-          ))}
+          <div className="col-6 col-md-3">
+            <button
+              onClick={() => setActiveMood("sunset")}
+              className={`dest-mood-card ${activeMood === "sunset" ? "active" : ""}`}
+            >
+              <i className="bi bi-brightness-alt-high dest-icon-box mb-2"></i>
+              <span className="dest-mood-label">Sunset Chill</span>
+            </button>
+          </div>
+
+          <div className="col-6 col-md-3">
+            <button
+              onClick={() => setActiveMood("energy")}
+              className={`dest-mood-card ${activeMood === "energy" ? "active" : ""}`}
+            >
+              <i className="bi bi-lightning-charge-fill dest-icon-box mb-2"></i>
+              <span className="dest-mood-label">Pure Energy</span>
+            </button>
+          </div>
+
+          <div className="col-6 col-md-3">
+            <button
+              onClick={() => setActiveMood("road")}
+              className={`dest-mood-card ${activeMood === "road" ? "active" : ""}`}
+            >
+              <i className="bi bi-ev-front-fill dest-icon-box mb-2"></i>
+              <span className="dest-mood-label">Road Trip</span>
+            </button>
+          </div>
+
+          <div className="col-6 col-md-3">
+            <button
+              onClick={() => setActiveMood("relax")}
+              className={`dest-mood-card ${activeMood === "relax" ? "active" : ""}`}
+            >
+              <i className="bi bi-water dest-icon-box mb-2"></i>
+              <span className="dest-mood-label">Deep Relax</span>
+            </button>
+          </div>
         </div>
 
         <div className="dest-mockup-screen">
@@ -65,10 +66,10 @@ const Player = () => {
           <div className="dest-screen-content">
             <div className="dest-now-playing">
               <div className="dest-album-art">
-                <i className="bi bi-spotify  "></i>
+                <i className="bi bi-spotify"></i>
               </div>
               <div className="dest-track-info">
-                <h4 className="dest-track-title"> Destinazione: Buon Umore!</h4>
+                <h4 className="dest-track-title">Destinazione: Buon Umore!</h4>
                 <p className="dest-track-artist">Your Travel Soundtrack</p>
               </div>
             </div>
@@ -82,12 +83,12 @@ const Player = () => {
             </div>
 
             <a
-              href={`https://open.spotify.com/playlist/${activePlaylist}`}
+              href="http://googleusercontent.com/spotify.com/4"
               target="_blank"
               rel="noreferrer"
               className="dest-btn-spotify-launch"
             >
-              <i className="bi bi-spotify me-2 f-2"></i>
+              <i className="bi bi-spotify me-2"></i>
               APRI SU SPOTIFY
             </a>
           </div>
