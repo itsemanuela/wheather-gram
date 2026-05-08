@@ -8,6 +8,7 @@ import DettaglioCity from "./Components/DettaglioCity";
 import ShareMood from "./Components/Share";
 import Footer from "./Components/MyFooter";
 import TopDestinations from "./Components/Holiday";
+import Player from "./Components/Player";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/details/:cityName" element={<DettaglioCity />} />
         <Route path="/mood" element={<ShareMood />} />
         <Route path="/Esplora" element={<TopDestinations />} />
+        <Route path="/player" element={<Player />} />
       </Routes>
       <Footer />
     </BrowserRouter>

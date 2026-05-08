@@ -26,7 +26,7 @@ const Footer = () => {
 
             <div className="vertical-divider mx-2"></div>
 
-            <span className="small-brand">© {currentYear} METEOMOOD</span>
+            <span className="small-brand">© {currentYear} Emanuela-Gram</span>
           </div>
         </div>
       </div>

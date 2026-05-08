@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ShareMood = () => {
-  useNavigate();
-
+  const navigate = useNavigate();
   const [selectedMood, setSelectedMood] = useState("bi-emoji-smile");
   const [text, setText] = useState("");
 
@@ -11,7 +10,7 @@ const ShareMood = () => {
     <div className="container-fluid py-5 animate__animated animate__fadeIn">
       <div className="row g-4 justify-content-center">
         <div className="col-lg-3 col-12">
-          <div className="glass-card p-4 text-center shadow">
+          <div className="glass-card p-4 text-center shadow mb-4">
             <div className="avatar-main mx-auto mb-3"></div>
             <h5 className="insta-font text-white">Il Tuo Profilo</h5>
             <div className="d-flex justify-content-around mt-4">
@@ -25,6 +24,14 @@ const ShareMood = () => {
               </div>
             </div>
           </div>
+
+          <button
+            className="btn-simple-player w-100 d-flex align-items-center justify-content-center shadow-sm"
+            onClick={() => navigate("/player")}
+          >
+            <i className="bi bi-spotify me-2 fs-5"></i>
+            <span>Scegli la tua Musica</span>
+          </button>
         </div>
 
         <div className="col-lg-5 col-md-10 text-center">
@@ -55,22 +62,19 @@ const ShareMood = () => {
             </div>
 
             <div className="d-flex justify-content-around mb-5 px-2">
-              <i
-                className={`bi fs-1 cursor-pointer transition-all ${selectedMood === "bi-emoji-smile" ? "bi-emoji-smile-fill text-warning scale-12" : "bi-emoji-smile text-white"}`}
-                onClick={() => setSelectedMood("bi-emoji-smile")}
-              ></i>
-              <i
-                className={`bi fs-1 cursor-pointer transition-all ${selectedMood === "bi-emoji-heart-eyes" ? "bi-emoji-heart-eyes-fill text-danger scale-12" : "bi-emoji-heart-eyes text-white"}`}
-                onClick={() => setSelectedMood("bi-emoji-heart-eyes")}
-              ></i>
-              <i
-                className={`bi fs-1 cursor-pointer transition-all ${selectedMood === "bi-emoji-sunglasses" ? "bi-emoji-sunglasses-fill text-primary scale-12" : "bi-emoji-sunglasses text-white"}`}
-                onClick={() => setSelectedMood("bi-emoji-sunglasses")}
-              ></i>
-              <i
-                className={`bi fs-1 cursor-pointer transition-all ${selectedMood === "bi-emoji-cloud-lightning" ? "bi-emoji-cloud-lightning-fill text-info scale-12" : "bi-emoji-cloud-lightning text-white"}`}
-                onClick={() => setSelectedMood("bi-emoji-cloud-lightning")}
-              ></i>
+              {[
+                "bi-emoji-smile",
+                "bi-emoji-heart-eyes",
+                "bi-emoji-sunglasses",
+                "bi-emoji-cloud-lightning",
+              ].map((m) => (
+                <i
+                  key={m}
+                  className={`bi fs-1 cursor-pointer transition-all ${selectedMood === m ? `${m}-fill text-warning scale-12` : `${m} text-white`}`}
+                  onClick={() => setSelectedMood(m)}
+                  style={{ cursor: "pointer" }}
+                ></i>
+              ))}
             </div>
 
             <textarea
@@ -80,6 +84,7 @@ const ShareMood = () => {
               value={text}
               onChange={(e) => setText(e.target.value)}
             ></textarea>
+
             <button
               className="btn-insta-full"
               onClick={() =>
@@ -98,13 +103,13 @@ const ShareMood = () => {
               <i className="bi bi-lightning-fill text-warning me-2"></i>Tendenze
             </h6>
             <div className="text-start">
-              <span className="badge bg-light text-dark mb-2 d-inline-block">
+              <span className="badge bg-light text-dark mb-2 d-inline-block me-1">
                 #MeteoMood
               </span>
-              <span className="badge bg-light text-dark mb-2 d-inline-block">
-                #Spring2024
+              <span className="badge bg-light text-dark mb-2 d-inline-block me-1">
+                #Spring2026
               </span>
-              <span className="badge bg-light text-dark mb-2 d-inline-block">
+              <span className="badge bg-light text-dark mb-2 d-inline-block me-1">
                 #SoleOut
               </span>
             </div>
