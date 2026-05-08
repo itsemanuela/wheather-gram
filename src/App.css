@@ -68,5 +68,36 @@ position: absolute;
   transform: translateY(-50%) scale(1.1);
 }
  
+ 
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);  
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  max-width: 850px;
+  padding: 60px !important;
+}
 
+ 
+.btn-insta {
+  background: white;
+  color: #d62976; 
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-insta:hover {
+  transform: translateY(-5px) scale(1.05);
+  background: #f9ce34;  
+  color: #262626;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
  
