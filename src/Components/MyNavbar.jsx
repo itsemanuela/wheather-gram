@@ -23,7 +23,7 @@ function MyNavbar() {
               Home
             </Nav.Link>
             <Nav.Link as={Link} to="/Esplora" className="nav-link-custom">
-              Esplora
+              Mode Vacanza
             </Nav.Link>
             <Nav.Link as={Link} to="/mood" className="nav-link-custom">
               Share your mood!

@@ -4,7 +4,7 @@ import PaginaCentrale from "./Components/PaginaCentrale";
 import RicercaMeteo from "./Components/RicercaMeteo";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
+import DettaglioCity from "./Components/DettaglioCity";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PaginaCentrale />} />
         <Route path="/RicercaMeteo" element={<RicercaMeteo />} />
+        <Route path="/details/:cityName" element={<DettaglioCity />} />
       </Routes>
     </BrowserRouter>
   );
