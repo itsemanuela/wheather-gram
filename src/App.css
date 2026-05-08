@@ -347,7 +347,7 @@ body {
   height: 80px;
   border-radius: 50%;
   background: linear-gradient(45deg, #f09433, #bc1888);
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(136, 23, 159, 0.2);
 }
 
 .avatar-sm {
@@ -1059,7 +1059,7 @@ body {
  
   .btn-simple-player {
   background: rgba(29, 185, 84, 0.1);
-  border: 1px solid rgba(29, 185, 84, 0.5);
+  border: 1px solid rgba(8, 139, 54, 0.5);
   color: #1db954;
   padding: 12px;
   border-radius: 15px;
